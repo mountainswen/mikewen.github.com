@@ -193,3 +193,4 @@ t,ok := inter.(T)
 总结
 ---------
 这篇文章简单介绍了golang interface中method的实现。通过本文的介绍，我们了解了go中method信息在interface type中的存储位置，同时也了解自定义类型的method信息的存储位置。我们还通过源码解析了golang构造method list的过程。和C++比较类似，go也是通过一个函数表来实现类似多态的行为，最后我们还涉及了interface  type assertion操作，它是一种从interface中提取该interface持有的具体类型的手段。
+总的来说，interface是一种通过方法来区分类型的手段。实现相同方法的类型可以通过相同的interface联系起来，使得程序在运行时可以实现多态。也就是对外暴露的接口只需要表明参数接收这个interface，则实现这个interface方法的所有类型都可以作为这个接口的参数传递进去。
