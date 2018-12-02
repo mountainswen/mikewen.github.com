@@ -180,3 +180,16 @@ type assertion
 ```go
 t := inter.(T)
 ```
+显然，它是interface泛型化的一个反过程。
+
+每次对一个interface变量进行type assertion操作golang都会检查interfac中的_type是是否和操作符中的T是属于同一个类型，如果不是的话则会panic。
+
+为了避免panic，可以这样写：
+```go
+t,ok := inter.(T)
+```
+通过ok可以判断是否可以被转换，如果类型不匹配也不会发生panic。
+
+总结
+---------
+这篇文章简单介绍了golang interface中method的实现。通过本文的介绍，我们了解了go中method信息在interface type中的存储位置，同时也了解自定义类型的method信息的存储位置。我们还通过源码解析了golang构造method list的过程。和C++比较类似，go也是通过一个函数表来实现类似多态的行为，最后我们还涉及了interface  type assertion操作，它是一种从interface中提取该interface持有的具体类型的手段。
